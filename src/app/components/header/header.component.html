@@ -1,1 +1,23 @@
-<p>header works!</p>
+<header>
+  <div class="navbar navbar-dark bg-primary shadow-sm">
+    <div class="navbar-brand align-item-center d-flex">
+      <div style="font-size: 30px">
+        <fa-icon [icon]="faShippingFast"></fa-icon>&nbsp;
+        <strong>Flipkart</strong>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Search product"
+          class="form-control ml-3"
+          style="border-radius: 3px; width: 400px"
+        />
+      </div>
+      <fa-icon [icon]="faSearch" class="ml-2 py-1"></fa-icon>
+    </div>
+    <button class="btn btn-primary">
+      <fa-icon [icon]="faCartPlus" style="font-size: 30px"></fa-icon>
+      <div class="badge bg-danger" style="font-size: 10px">5</div>
+    </button>
+  </div>
+</header>
