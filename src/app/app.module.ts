@@ -8,21 +8,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './components/header/header.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ApiService } from 'src/app/services/api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FontAwesomeModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
+  providers: [ApiService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
