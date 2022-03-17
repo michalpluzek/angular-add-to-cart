@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { ProductInterface } from 'src/app/types/product.interface';
 
@@ -7,49 +7,29 @@ import { ProductInterface } from 'src/app/types/product.interface';
   providedIn: 'root',
 })
 export class CartService {
-  public cartItemList: ProductInterface[] = [];
-  public productList$ = new BehaviorSubject<ProductInterface[]>([]);
+  public cartItemList$ = new BehaviorSubject<ProductInterface[]>([]);
 
   constructor() {}
 
-  getProducts(): Observable<ProductInterface[]> {
-    return this.productList$.asObservable();
-  }
-
   setProducts(products: ProductInterface[]): void {
-    this.cartItemList.push(...products);
-    this.productList$.next(products);
+    this.cartItemList$.next(products);
   }
 
   addToCart(product: ProductInterface): void {
-    this.cartItemList.push(product);
-    this.productList$.next(this.cartItemList);
-    this.getTotalPrice();
+    const updatedCartList = [...this.cartItemList$.getValue(), product];
 
-    console.log(this.cartItemList);
+    this.cartItemList$.next(updatedCartList);
   }
 
-  getTotalPrice(): number {
-    let totalPrice = 0;
-    this.cartItemList.map((item) => {
-      totalPrice += item.price;
-    });
+  removeCartItem(id: number): void {
+    const updatedCartList = this.cartItemList$
+      .getValue()
+      .filter((product) => product.id !== id);
 
-    return totalPrice;
-  }
-
-  removeCartItem(product: ProductInterface): void {
-    this.cartItemList.map((item, index) => {
-      if (product.id === item.id) {
-        this.cartItemList.splice(index, 1);
-      }
-    });
-
-    this.productList$.next(this.cartItemList);
+    this.cartItemList$.next(updatedCartList);
   }
 
   removeAllCart(): void {
-    this.cartItemList = [];
-    this.productList$.next(this.cartItemList);
+    this.cartItemList$.next([]);
   }
 }

@@ -17,9 +17,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private cartService: CartService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.productList$ = this.apiService.getProducts().pipe(
       map((products) => {
         products.forEach((product) => {
@@ -29,6 +27,8 @@ export class ProductsComponent implements OnInit {
       })
     );
   }
+
+  ngOnInit(): void {}
 
   addToCart(product: ProductInterface): void {
     this.cartService.addToCart(product);

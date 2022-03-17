@@ -1,3 +1,7 @@
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import {
   faShippingFast,
@@ -15,7 +19,13 @@ export class HeaderComponent implements OnInit {
   faSearch = faSearch;
   faCartPlus = faCartPlus;
 
-  constructor() {}
+  public totalProducts$!: Observable<number>;
 
-  ngOnInit(): void {}
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.totalProducts$ = this.cartService.cartItemList$.pipe(
+      map((products) => products.length)
+    );
+  }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="true" class="container">
+<div *ngIf="!(noProductsInCart$ | async)" class="container">
   <div class="card-table">
     <div class="cart-product table-responsive">
       <table class="table">
@@ -15,16 +15,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>Iphone</td>
-            <td>Some image</td>
-            <td>This is branded phone</td>
-            <td>50,000</td>
-            <td>1</td>
-            <td>50,000</td>
+          <tr *ngFor="let product of products$ | async; let i = index">
+            <td scope="row">{{ i + 1 }}</td>
+            <td>{{ product.title }}</td>
+            <td><img src="{{ product.image }}" alt="" width="120px" /></td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.total }}</td>
             <td>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" (click)="removeCart(product.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </button>
             </td>
@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<div *ngIf="false" class="container">
+<div *ngIf="noProductsInCart$ | async" class="container">
   <div class="card">
     <h5 class="card-title">My cart</h5>
   </div>
