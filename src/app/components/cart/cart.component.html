@@ -1,1 +1,51 @@
-<p>cart works!</p>
+<div *ngIf="true" class="container">
+  <div class="card-table">
+    <div class="cart-product table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">Product name</th>
+            <th scope="col">Product image</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">1</td>
+            <td>Iphone</td>
+            <td>Some image</td>
+            <td>This is branded phone</td>
+            <td>50,000</td>
+            <td>1</td>
+            <td>50,000</td>
+            <td>
+              <button class="btn btn-danger">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="false" class="container">
+  <div class="card">
+    <h5 class="card-title">My cart</h5>
+  </div>
+  <div class="center">
+    <img
+      src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+      alt=""
+    />
+    <h4>Your cart is empty!</h4>
+    <h6>Add item to it now!</h6>
+    <button class="btn btn-primary">Shop now!</button>
+  </div>
+</div>

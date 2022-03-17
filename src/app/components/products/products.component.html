@@ -56,7 +56,12 @@
       <p class="product__price">
         Price: <strong>{{ product.price }} $</strong>
       </p>
-      <button class="product__button btn btn-primary">Add to cart</button>
+      <button
+        class="product__button btn btn-primary"
+        (click)="addToCart(product)"
+      >
+        Add to cart
+      </button>
     </div>
   </div>
 </div>
