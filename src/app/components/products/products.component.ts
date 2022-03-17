@@ -33,4 +33,8 @@ export class ProductsComponent implements OnInit {
   addToCart(product: ProductInterface): void {
     this.cartService.addToCart(product);
   }
+
+  addToCart(product: ProductInterface): void {
+    this.cartService.addToCart(product);
+  }
 }
