@@ -38,3 +38,25 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div
+      class="product card col-md-3 p-3 m-4 justify-content-end"
+      *ngFor="let product of productList$ | async"
+    >
+      <img
+        class="product__image mb-3"
+        src="{{ product.image }}"
+        alt="{{ product.title }}"
+        width="150px"
+      />
+      <h5 class="product__title">{{ product.title }}</h5>
+      <p class="product__description">{{ product.description }}</p>
+      <p class="product__price">
+        Price: <strong>{{ product.price }} $</strong>
+      </p>
+      <button class="product__button btn btn-primary">Add to cart</button>
+    </div>
+  </div>
+</div>

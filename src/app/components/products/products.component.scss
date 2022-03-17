@@ -32,3 +32,25 @@
     }
   }
 }
+
+.product {
+  height: 400px;
+
+  &__title,
+  &__description {
+    max-width: 100ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__image {
+    transition: 0.3s ease-in-out;
+    max-height: 200px;
+    margin: 0 auto;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
