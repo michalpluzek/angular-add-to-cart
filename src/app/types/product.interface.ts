@@ -9,4 +9,6 @@ export interface ProductInterface {
     rate: number;
   };
   title: string;
+  quantity?: number;
+  total?: number;
 }
