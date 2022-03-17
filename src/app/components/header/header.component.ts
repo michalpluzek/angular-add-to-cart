@@ -21,11 +21,20 @@ export class HeaderComponent implements OnInit {
 
   public totalProducts$!: Observable<number>;
 
-  constructor(private cartService: CartService) {}
-
-  ngOnInit(): void {
+  constructor(private cartService: CartService) {
     this.totalProducts$ = this.cartService.cartItemList$.pipe(
-      map((products) => products.length)
+      map((products) => {
+        let total = 0;
+
+        products.map((product) => {
+          if (product.quantity) {
+            total += product.quantity;
+          }
+        });
+        return total;
+      })
     );
   }
+
+  ngOnInit(): void {}
 }

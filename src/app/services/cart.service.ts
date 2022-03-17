@@ -16,7 +16,20 @@ export class CartService {
   }
 
   addToCart(product: ProductInterface): void {
-    const updatedCartList = [...this.cartItemList$.getValue(), product];
+    let updatedCartList: ProductInterface[] = [];
+    const index = this.cartItemList$.getValue().indexOf(product);
+
+    if (index >= 0) {
+      const updatedCart = this.cartItemList$.getValue()[index];
+      if (updatedCart.quantity) {
+        updatedCart.quantity++;
+        updatedCart.total = updatedCart.quantity * updatedCart.price;
+      }
+
+      updatedCartList = [...this.cartItemList$.getValue()];
+    } else {
+      updatedCartList = [...this.cartItemList$.getValue(), product];
+    }
 
     this.cartItemList$.next(updatedCartList);
   }
