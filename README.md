@@ -1,6 +1,7 @@
 # AngularAddToCart
 
-This project from YT https://www.youtube.com/watch?v=855KrFfF9-w&ab_channel=Let%27sProgram
+Design taken from YT + my modifications
+https://www.youtube.com/watch?v=855KrFfF9-w&ab_channel=Let%27sProgram
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
